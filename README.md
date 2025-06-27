@@ -72,12 +72,38 @@ src/
 
 ## Architecture
 
-This project follows Domain-Driven Design principles and Clean Architecture:
+This project follows Domain-Driven Design principles and Clean Architecture, organized into distinct layers:
 
-1. **Domain Layer**: Contains the core business logic, entities, and business rules
-2. **Application Layer**: Orchestrates the flow of data and implements use cases
-3. **Infrastructure Layer**: Provides implementations for external services
-4. **Interface Layer**: Handles external requests and responses
+### 1. Domain Layer (src/domain/)
+The heart of the application, containing core business logic and rules:
+- **Entities**: Core business objects (e.g., Order)
+- **Value Objects**: Immutable objects representing descriptive aspects of the domain (e.g., OrderItem)
+- **Domain Services**: Complex operations that don't naturally fit in entities
+- **Domain Events**: Business events that domain experts care about
+- **Repository Interfaces**: Abstract persistence requirements
+
+### 2. Application Layer (src/application/)
+Orchestrates the flow of data and use cases:
+- **Use Cases**: Application-specific business rules
+- **DTOs**: Data Transfer Objects for input/output
+
+### 3. Infrastructure Layer (src/infrastructure/)
+Provides technical capabilities and implementations:
+- **Database**: Repository implementations (e.g., MongoDB)
+- **Messaging**: Event handling (e.g., Kafka)
+- **Configuration**: System configuration management
+
+### 4. Interface Layer (src/interfaces/)
+Handles external communication:
+- **HTTP Controllers**: Request handling
+- **Route Definitions**: API endpoint mapping
+- **Request/Response**: Data transformation
+
+### 5. Shared Kernel (src/shared/)
+Common utilities and base components:
+- **Base Entities**: Abstract base classes
+- **Error Handling**: Domain-specific errors
+- **Utilities**: Shared helper functions
 
 ## Testing
 
